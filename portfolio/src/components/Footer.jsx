@@ -2,41 +2,90 @@ import { FaLinkedin, FaEnvelope, FaGithub } from 'react-icons/fa';
 import { contact, hero } from '../data';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="w-full border-t border-white/5 py-16">
-      <div className="w-full max-w mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
-          <p className="text-slate-700 text-xs text-center md:text-left">
-            © 2026 {hero.name}
+    <footer className="relative z-10 mt-24 mb-16 py-6 px-8 translate-y-0 translate-x- -2">
+      <div className="container mx-auto px-8 py-12">
+        <div className="hidden md:flex items-center justify-between gap-8">
+          {/* Left: Copyright */}
+          <p className="text-slate-500 text-sm font-light">
+            © {currentYear} {hero.name}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          {/* Center: Social links */}
+          <div className="flex items-center gap-6">
             <a
               href={contact.linkedin}
-              target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 text-slate-600 hover:text-slate-300 text-xs transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-slate-300 transition-colors duration-200"
+              title="LinkedIn"
             >
-              <FaLinkedin size={13} />
-              LinkedIn
+              <FaLinkedin size={16} />
             </a>
             <a
               href="https://github.com/nitin264/"
-              target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 text-slate-600 hover:text-slate-300 text-xs transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-slate-300 transition-colors duration-200"
+              title="GitHub"
             >
-              <FaGithub size={13} />
-              GitHub
+              <FaGithub size={16} />
             </a>
             <a
               href={`mailto:${contact.email}`}
-              className="flex items-center gap-2 text-slate-600 hover:text-slate-300 text-xs transition-colors"
+              className="text-slate-500 hover:text-slate-300 transition-colors duration-200"
+              title="Email"
             >
-              <FaEnvelope size={12} />
-              Email
+              <FaEnvelope size={16} />
             </a>
           </div>
 
-          <p className="text-slate-600 text-xs text-center md:text-right">
+          {/* Right: Tech note */}
+          <p className="text-slate-500 text-sm font-light">
+            Built with React + Tailwind
+          </p>
+        </div>
+
+        {/* Mobile: stacked layout */}
+        <div className="flex md:hidden flex-col gap-6 items-center">
+          {/* Name */}
+          <p className="text-slate-500 text-xs font-light text-center">
+            © {currentYear} {hero.name}
+          </p>
+
+          {/* Social links */}
+          <div className="flex items-center gap-6">
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-slate-300 transition-colors duration-200"
+              title="LinkedIn"
+            >
+              <FaLinkedin size={16} />
+            </a>
+            <a
+              href="https://github.com/nitin264/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-slate-300 transition-colors duration-200"
+              title="GitHub"
+            >
+              <FaGithub size={16} />
+            </a>
+            <a
+              href={`mailto:${contact.email}`}
+              className="text-slate-500 hover:text-slate-300 transition-colors duration-200"
+              title="Email"
+            >
+              <FaEnvelope size={16} />
+            </a>
+          </div>
+
+          {/* Tech note */}
+          <p className="text-slate-500 text-xs font-light text-center">
             Built with React + Tailwind
           </p>
         </div>

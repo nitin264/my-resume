@@ -59,29 +59,29 @@ export const skills = [
 
 export const experience = [
   {
-    company: 'ValueMomentum',
-    role: 'Software Engineer',
-    duration: 'May 2022 – Present',
-    projects: [
-      {
-        name: 'Allied World',
-        responsibilities: [
-          'Production issue analysis and root cause investigation',
-          'SQL query development with joins and subqueries',
-          'Database optimization using PL/SQL packages and procedures',
-          'Collaboration with QA and business teams',
-        ],
-      },
-      {
-        name: 'Hiscox Insurance',
-        responsibilities: [
-          'Built product and UI enhancements',
-          'Implemented quote retrieval workflows',
-          'Built a Python Flask automation tool for server restart and cleanup',
-          'Automated deployments with Azure DevOps pipelines',
-          'Mentored 15+ new engineers',
-        ],
-      },
+    date: 'May 2022',
+    title: 'Joined ValueMomentum',
+    type: 'milestone',
+  },
+  {
+    dateRange: 'Aug 2022 – Mar 2025',
+    title: 'Hiscox Insurance',
+    responsibilities: [
+      'Built product and UI enhancements',
+      'Implemented quote retrieval workflows',
+      'Built a Python Flask automation tool for server restart and cleanup',
+      'Automated deployments with Azure DevOps pipelines',
+      'Mentored 15+ new engineers',
+    ],
+  },
+  {
+    dateRange: 'Apr 2025 – Present',
+    title: 'Allied World',
+    responsibilities: [
+      'Production issue analysis and root cause investigation',
+      'SQL query development with joins and subqueries',
+      'Database optimization using PL/SQL packages and procedures',
+      'Collaboration with QA and business teams',
     ],
   },
 ];
@@ -116,11 +116,27 @@ export const projects = [
     icon: '🤖',
   },
   {
-    title: 'Insurance Data Analyzer',
-    tech: ['Python', 'Pandas', 'FastAPI'],
-    description:
-      'Backend analytics service that processes insurance datasets and exposes aggregated insights through APIs.',
-    icon: '📊',
+    "title": "Developer Portfolio Platform",
+    "description": "Production-ready portfolio application showcasing projects and experience with a focus on performance, responsive design, and clean UI architecture.",
+    "highlights": [
+      "Implemented multi-environment deployment workflow (dev/staging/production) using Git branching and Vercel preview deployments",
+      "Designed reusable component architecture with React and Tailwind CSS for consistent layout and spacing",
+      "Optimized rendering and layout behavior to ensure uniform card alignment and responsive UI across devices"
+    ],
+    "tech": ["React", "Vite", "Tailwind CSS", "Vercel", "Git"],
+    "features": [
+      "Dynamic project rendering",
+      "Responsive grid and layout system",
+      "Consistent spacing using flex/grid gap strategy",
+      "Preview deployments for staging branches"
+    ],
+    "deployment": {
+      "platform": "Vercel",
+      "productionBranch": "main",
+      "stagingBranch": "staging",
+      "developmentBranch": "dev"
+    },
+    "icon": "🌐",
   },
 ];
 
