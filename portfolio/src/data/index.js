@@ -59,29 +59,29 @@ export const skills = [
 
 export const experience = [
   {
-    company: 'ValueMomentum',
-    role: 'Software Engineer',
-    duration: 'May 2022 – Present',
-    projects: [
-      {
-        name: 'Allied World',
-        responsibilities: [
-          'Production issue analysis and root cause investigation',
-          'SQL query development with joins and subqueries',
-          'Database optimization using PL/SQL packages and procedures',
-          'Collaboration with QA and business teams',
-        ],
-      },
-      {
-        name: 'Hiscox Insurance',
-        responsibilities: [
-          'Built product and UI enhancements',
-          'Implemented quote retrieval workflows',
-          'Built a Python Flask automation tool for server restart and cleanup',
-          'Automated deployments with Azure DevOps pipelines',
-          'Mentored 15+ new engineers',
-        ],
-      },
+    date: 'May 2022',
+    title: 'Joined ValueMomentum',
+    type: 'milestone',
+  },
+  {
+    dateRange: 'Aug 2022 – Mar 2025',
+    title: 'Hiscox Insurance',
+    responsibilities: [
+      'Built product and UI enhancements',
+      'Implemented quote retrieval workflows',
+      'Built a Python Flask automation tool for server restart and cleanup',
+      'Automated deployments with Azure DevOps pipelines',
+      'Mentored 15+ new engineers',
+    ],
+  },
+  {
+    dateRange: 'Apr 2025 – Present',
+    title: 'Allied World',
+    responsibilities: [
+      'Production issue analysis and root cause investigation',
+      'SQL query development with joins and subqueries',
+      'Database optimization using PL/SQL packages and procedures',
+      'Collaboration with QA and business teams',
     ],
   },
 ];
