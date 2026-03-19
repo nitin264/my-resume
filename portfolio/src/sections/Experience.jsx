@@ -74,9 +74,9 @@ export default function Experience() {
                       {proj.responsibilities.map((resp, ri) => (
                         <li
                         key={ri}
-                        className="flex items-start gap-5 text-slate-400 text-base leading-[1.8]"
+                        className="flex items-center gap-3 text-slate-400 text-base leading-[1.8]"
                       >
-                          <span className="mt-[0.6rem] w-1.5 h-1.5 rounded-full bg-indigo-500/50 flex-shrink-0" />
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-500/50 flex-shrink-0"/>
                           <span>{resp}</span>
                         </li>
                       ))}
