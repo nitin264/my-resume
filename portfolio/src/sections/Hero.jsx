@@ -28,7 +28,7 @@ export default function Hero() {
 
           {/* Availability badge — larger */}
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
-            <span className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass text-sm text-indigo-300 font-mono border border-indigo-500/20">
+            <span className="inline-flex items-center gap-2 text-sm text-indigo-300 font-mono">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Available for opportunities
             </span>
