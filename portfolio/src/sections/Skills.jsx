@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 import { skills } from '../data';
 
 /* ── Per-category visual config ── */
@@ -83,6 +84,7 @@ const floatStyles = `
 export default function Skills() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '80px' });
+  const { theme } = useTheme();
 
   return (
     <section
@@ -94,56 +96,64 @@ export default function Skills() {
       <style>{floatStyles}</style>
 
       {/* ── Deep radial gradient background ── */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(99,102,241,0.07) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
+      {theme === 'dark' && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(99,102,241,0.07) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
 
       {/* ── Blob 1 — top-left violet ── */}
-      <div
-        className="glow-blob"
-        style={{
-          width: 480,
-          height: 380,
-          top: '-80px',
-          left: '-100px',
-          background: '#7c3aed',
-          opacity: 0.07,
-          filter: 'blur(110px)',
-        }}
-      />
+      {theme === 'dark' && (
+        <div
+          className="glow-blob"
+          style={{
+            width: 480,
+            height: 380,
+            top: '-80px',
+            left: '-100px',
+            background: '#7c3aed',
+            opacity: 0.07,
+            filter: 'blur(110px)',
+          }}
+        />
+      )}
 
       {/* ── Blob 2 — bottom-right indigo ── */}
-      <div
-        className="glow-blob"
-        style={{
-          width: 420,
-          height: 340,
-          bottom: '-60px',
-          right: '-80px',
-          background: '#4f46e5',
-          opacity: 0.08,
-          filter: 'blur(100px)',
-        }}
-      />
+      {theme === 'dark' && (
+        <div
+          className="glow-blob"
+          style={{
+            width: 420,
+            height: 340,
+            bottom: '-60px',
+            right: '-80px',
+            background: '#4f46e5',
+            opacity: 0.08,
+            filter: 'blur(100px)',
+          }}
+        />
+      )}
 
       {/* ── Blob 3 — center sky ── */}
-      <div
-        className="glow-blob"
-        style={{
-          width: 300,
-          height: 260,
-          top: '40%',
-          left: '55%',
-          background: '#0ea5e9',
-          opacity: 0.05,
-          filter: 'blur(120px)',
-        }}
-      />
+      {theme === 'dark' && (
+        <div
+          className="glow-blob"
+          style={{
+            width: 300,
+            height: 260,
+            top: '40%',
+            left: '55%',
+            background: '#0ea5e9',
+            opacity: 0.05,
+            filter: 'blur(120px)',
+          }}
+        />
+      )}
 
       {/* ── Content ── */}
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 1 }}>
@@ -167,7 +177,7 @@ export default function Skills() {
               Skills &amp;{' '}
               <span className="gradient-text">Technologies</span>
             </h2>
-            <p style={{ marginTop: '1rem', marginBottom: '1.5rem', color: 'var(--muted)', fontSize: '20px', maxWidth: 780, margin: '1rem auto 0' }}>
+            <p style={{ marginBottom: '2rem', color: 'var(--muted)', fontSize: '20px', maxWidth: 780, margin: '1rem auto 0' }}>
               Tools, languages, and frameworks I use to build reliable backend systems.
             </p>
           </motion.div>

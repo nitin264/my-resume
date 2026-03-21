@@ -1,4 +1,5 @@
 import './index.css';
+import { useTheme } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -7,11 +8,14 @@ import Experience from './sections/Experience';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from './context/ThemeContext';
 
-export default function App() {
+function AppContent() {
+  const { theme } = useTheme();
+
   return (
-    <div className="relative min-h-screen" style={{ backgroundColor: '#0a0a0f' }}>
+    <div className="relative min-h-screen" style={{ backgroundColor: 'var(--bg)' }}>
       <Navbar />
       <main>
         <Hero />
@@ -22,8 +26,10 @@ export default function App() {
         <Contact />
       </main>
 
-      {/* Gradient fade overlay */}
-      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-56 bg-gradient-to-t from-black via-black/70 to-transparent" />
+      {/* Gradient fade overlay — only in dark mode */}
+      {theme === 'dark' && (
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-56 bg-gradient-to-t from-black via-black/70 to-transparent" />
+      )}
 
       {/* Footer */}
       <Footer />
@@ -32,3 +38,12 @@ export default function App() {
     </div>
   );
 }
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
+

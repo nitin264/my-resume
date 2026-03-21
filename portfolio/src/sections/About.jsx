@@ -61,10 +61,10 @@ export default function About() {
 
           {/* Right — body copy */}
           <div className="max-w-xl">
-            <motion.p variants={item} className="text-slate-300 text-lg leading-[1.65] mb-6">
+            <motion.p variants={item} className="text-contrast-secondary text-lg leading-[1.65] mb-6">
               {about.summary}
             </motion.p>
-            <motion.p variants={item} className="text-slate-500 text-base leading-[1.65] mb-10">
+            <motion.p variants={item} className="text-contrast-secondary text-base leading-[1.65] mb-10">
               I thrive in complex insurance and enterprise environments, collaborating with QA teams,
               business analysts, and stakeholders to deliver production-quality backend code.
             </motion.p>
@@ -72,7 +72,7 @@ export default function About() {
             {/* Bullet list with increased spacing */}
             <motion.ul variants={item} className="space-y-4 pl-6 mb-10">
               {about.highlights.map((h) => (
-                <li key={h} className="text-slate-400 text-base flex items-center gap-3 leading-relaxed">
+                <li key={h} className="text-contrast-secondary text-base flex items-center gap-3 leading-relaxed">
                   <span className="w-1 h-1 rounded-full bg-indigo-400 flex-shrink-0" />
                   {h}
                 </li>
@@ -82,7 +82,7 @@ export default function About() {
             {/* Italic closing — after the list */}
             <motion.p
               variants={item}
-              className="text-slate-300 italic text-base leading-relaxed pl-6"
+              className="text-contrast-secondary italic text-base leading-relaxed pl-6"
             >
               {about.closing}
             </motion.p>
