@@ -177,7 +177,7 @@ export default function Skills() {
               Skills &amp;{' '}
               <span className="gradient-text">Technologies</span>
             </h2>
-            <p style={{ marginBottom: '2rem', color: 'var(--muted)', fontSize: '20px', maxWidth: 780, margin: '1rem auto 0' }}>
+            <p style={{ marginBottom: '2.5rem', color: 'var(--muted)', fontSize: '20px', maxWidth: 780, margin: '1rem auto 0' }}>
               Tools, languages, and frameworks I use to build reliable backend systems.
             </p>
           </motion.div>

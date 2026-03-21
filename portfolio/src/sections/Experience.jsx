@@ -394,7 +394,7 @@ export default function Experience() {
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                   }}>
-                    ⚡ {milestone.date} — {milestone.title}
+                      {milestone.date} — {milestone.title}
                   </motion.div>
                 </div>
               )}
