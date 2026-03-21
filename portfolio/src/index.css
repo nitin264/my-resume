@@ -28,7 +28,7 @@
 /* ── Global theme transition ── */
 *, *::before, *::after {
   transition-property: background-color, border-color, color, box-shadow;
-  transition-duration: 0.3s;
+  transition-duration: 0.s;
   transition-timing-function: ease;
 }
 
@@ -101,7 +101,7 @@ body {
 }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 15px; }
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.4); border-radius: 4px; }
 
@@ -220,7 +220,7 @@ input:focus, textarea:focus {
 
 /* ── Theme-aware text utilities ── */
 .text-contrast-badge {
-  color: #1a1a1b;
+  color: #a5b4fc;
 }
 
 [data-theme="light"] .text-contrast-badge {
