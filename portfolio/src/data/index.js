@@ -65,7 +65,7 @@ export const experience = [
   },
   {
     dateRange: 'Aug 2022 – Mar 2025',
-    title: 'Hiscox Insurance',
+    title: 'Leading UK-based Insurance Company',
     responsibilities: [
       'Delivered UI and product enhancements improving usability across a digital insurance platform',
       'Engineered scalable quote retrieval workflows for reliable policy processing',
@@ -77,7 +77,7 @@ export const experience = [
   },
   {
     dateRange: 'Apr 2025 – Present',
-    title: 'Allied World',
+    title: 'Global Specialty Insurer (Policy & Claims Systems)',
     responsibilities: [
       'Investigating high-priority production issues and performing root cause analysis to maintain system reliability and uptime',
       'Developing complex SQL queries (joins, subqueries) to support business-critical insurance workflows',
