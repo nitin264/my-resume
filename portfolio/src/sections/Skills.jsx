@@ -167,6 +167,7 @@ export default function Skills() {
           <motion.div
             variants={cardVariants}
             className="mb-28"
+            initial={false}
             style={{ textAlign: 'center' }}
           >
             <p className="label mb-4">Tech Stack</p>
@@ -177,7 +178,7 @@ export default function Skills() {
               Skills &amp;{' '}
               <span className="gradient-text">Technologies</span>
             </h2>
-            <p style={{ marginBottom: '2rem', color: 'var(--muted)', fontSize: '20px', maxWidth: 780, margin: '1rem auto 0' }}>
+            <p style={{ color: 'var(--muted)', fontSize: '20px', maxWidth: 780, margin: '1rem auto 0' ,marginBottom: '2.5rem' }}>
               Tools, languages, and frameworks I use to build reliable backend systems.
             </p>
           </motion.div>
