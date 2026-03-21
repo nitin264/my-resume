@@ -1,18 +1,22 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 import { projects } from '../data';
 
 export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const { theme } = useTheme();
 
   return (
-    <section id="projects" className="section" style={{ background: 'rgba(99,102,241,0.015)' }}>
+    <section id="projects" className="section" style={{ background: theme === 'dark' ? 'rgba(99,102,241,0.015)' : 'transparent' }}>
       {/* Ambient glow */}
-      <div
-        className="glow-blob w-[500px] h-[400px] top-0 left-1/2 opacity-[0.04]"
-        style={{ background: '#6366f1', transform: 'translateX(-50%)' }}
-      />
+      {theme === 'dark' && (
+        <div
+          className="glow-blob w-[500px] h-[400px] top-0 left-1/2 opacity-[0.04]"
+          style={{ background: '#6366f1', transform: 'translateX(-50%)' }}
+        />
+      )}
 
       <div className="container mx-auto px-8 relative">
         <motion.div

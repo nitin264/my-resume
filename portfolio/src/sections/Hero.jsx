@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { useTheme } from '../context/ThemeContext';
 import Button from '../components/Button';
 import { hero } from '../data';
 
@@ -12,6 +13,8 @@ const fadeUp = {
 };
 
 export default function Hero() {
+  const { theme } = useTheme();
+
   return (
     <section
       id="hero"
@@ -28,7 +31,7 @@ export default function Hero() {
 
           {/* Availability badge — larger */}
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
-            <span className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass text-sm text-indigo-300 font-mono border border-indigo-500/20">
+            <span className="inline-flex items-center gap-2 text-sm text-contrast-badge font-mono">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Available for opportunities
             </span>
@@ -51,7 +54,7 @@ export default function Hero() {
             className="flex items-center gap-4"
           >
             <div className="w-10 h-px bg-indigo-500/50" />
-            <p className="text-slate-400 font-mono text-base tracking-wider">
+            <p className="text-contrast-secondary font-mono text-base tracking-wider">
               Software Engineer · Python Backend Developer
             </p>
           </motion.div>
@@ -59,7 +62,7 @@ export default function Hero() {
           {/* Tagline */}
           <motion.p
             custom={3} variants={fadeUp} initial="hidden" animate="visible"
-            className="text-slate-400 text-xl leading-relaxed max-w-2xl font-light"
+            className="text-contrast-secondary text-xl leading-relaxed max-w-2xl font-light"
           >
             {hero.tagline}
           </motion.p>
@@ -101,9 +104,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, #050507, transparent)' }} />
+      {/* Bottom fade — only in dark mode */}
+      {theme === 'dark' && (
+        <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, #050507, transparent)' }} />
+      )}
     </section>
   );
 }
