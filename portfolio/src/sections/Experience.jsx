@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 import { experience } from '../data';
 
 /* ── Floating keyframes injected once ── */
@@ -245,6 +246,7 @@ function TimelineNode({ cfg }) {
 export default function Experience() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
+  const { theme } = useTheme();
 
   /* Separate milestone from roles for alternating layout */
   const roles = experience.filter(e => e.type !== 'milestone');
@@ -255,14 +257,18 @@ export default function Experience() {
       <style>{floatStyles}</style>
 
       {/* ── Background depth blobs ── */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse 70% 50% at 50% 30%, rgba(139,92,246,0.07) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
-      <div className="glow-blob" style={{ width: 500, height: 400, top: '10%', left: '-120px', background: '#6366f1', opacity: 0.06, filter: 'blur(120px)' }} />
-      <div className="glow-blob" style={{ width: 380, height: 340, bottom: '5%', right: '-80px', background: '#8b5cf6', opacity: 0.07, filter: 'blur(100px)' }} />
-      <div className="glow-blob" style={{ width: 280, height: 240, top: '55%', left: '45%', background: '#38bdf8', opacity: 0.045, filter: 'blur(110px)' }} />
+      {theme === 'dark' && (
+        <>
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'radial-gradient(ellipse 70% 50% at 50% 30%, rgba(139,92,246,0.07) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }} />
+          <div className="glow-blob" style={{ width: 500, height: 400, top: '10%', left: '-120px', background: '#6366f1', opacity: 0.06, filter: 'blur(120px)' }} />
+          <div className="glow-blob" style={{ width: 380, height: 340, bottom: '5%', right: '-80px', background: '#8b5cf6', opacity: 0.07, filter: 'blur(100px)' }} />
+          <div className="glow-blob" style={{ width: 280, height: 240, top: '55%', left: '45%', background: '#38bdf8', opacity: 0.045, filter: 'blur(110px)' }} />
+        </>
+      )}
 
       {/* ── Content ── */}
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 1 }}>
