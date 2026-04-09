@@ -94,28 +94,24 @@ export const projects = [
     tech: ['Python', 'REST APIs', 'AsyncIO'],
     description:
       'Backend system for managing real-time chat interactions using asynchronous architecture.',
-    icon: '💬',
   },
   {
     title: 'Server Automation Tool',
     tech: ['Python', 'Flask'],
     description:
       'Automation platform that manages server restarts, environment resets, and cleanup tasks for development environments.',
-    icon: '⚙️',
   },
   {
     title: 'API Data Automation Tool',
     tech: ['Python', 'FastAPI', 'Pandas'],
     description:
       'Backend service that collects API data, processes it using Pandas, and exposes structured endpoints.',
-    icon: '🔄',
   },
   {
     title: 'AI Document Search Tool',
     tech: ['Python', 'FastAPI', 'OpenAI API', 'Vector Database'],
     description:
       'Document assistant that allows users to upload PDFs and ask questions using semantic search.',
-    icon: '🤖',
   },
   {
     "title": "Developer Portfolio Platform",
@@ -138,7 +134,6 @@ export const projects = [
       "stagingBranch": "staging",
       "developmentBranch": "dev"
     },
-    "icon": "🌐",
   },
 ];
 
