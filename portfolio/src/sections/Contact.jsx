@@ -1,191 +1,281 @@
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { contact } from '../data';
-import { FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
-import Button from '../components/Button';
+
+function MailIcon({ className = '' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M4 7.75A1.75 1.75 0 0 1 5.75 6h12.5A1.75 1.75 0 0 1 20 7.75v8.5A1.75 1.75 0 0 1 18.25 18H5.75A1.75 1.75 0 0 1 4 16.25v-8.5Z"
+        className="fill-current"
+        opacity="0.18"
+      />
+      <path
+        d="m5.5 8 5.47 4.1a1.75 1.75 0 0 0 2.06 0L18.5 8"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.9 7.6 12 12.82 19.1 7.6"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className = '' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="4.25" y="4.25" width="15.5" height="15.5" rx="3.5" className="fill-current" opacity="0.14" />
+      <path
+        d="M9 10.25V16"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M9 8.35a.85.85 0 1 0 0 1.7.85.85 0 0 0 0-1.7Z"
+        className="fill-current"
+      />
+      <path
+        d="M12.5 16v-3.3c0-1.18.68-2.03 1.77-2.03 1.08 0 1.73.75 1.73 2.03V16"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.5 10.25v.97"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowRightIcon({ className = '' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M5 12h14"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="m13 6 6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function Contact() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const { theme } = useTheme();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
-  const { theme } = useTheme();
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+  const isLight = theme === 'light';
+  const linkedinHandle = contact.linkedin
+    .replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, '')
+    .replace(/\/$/, '');
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
   };
 
-  const inputCls = theme === 'light'
-    ? `w-full bg-transparent border-b border-gray-300 py-4 text-gray-900 text-sm
-       placeholder-gray-400 transition-colors duration-200 focus:border-indigo-500/60 outline-none`
-    : `w-full bg-transparent border-b border-white/10 py-4 text-slate-200 text-sm
-       placeholder-slate-600 transition-colors duration-200 focus:border-indigo-500/60 outline-none`;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
+
+    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+    setSent(true);
+    window.setTimeout(() => setSent(false), 3000);
+  };
+
+  const sectionText = isLight ? 'text-slate-950' : 'text-white';
+  const labelText = isLight ? 'text-indigo-700/80' : 'text-indigo-400/90';
+  const introText = isLight ? 'text-slate-600' : 'text-slate-400/85';
+  const dividerColor = isLight ? 'bg-slate-900/10' : 'bg-white/5';
+  const itemBorder = isLight ? 'border-slate-900/10' : 'border-white/10';
+  const cardClass = isLight
+    ? 'bg-white/80 border border-slate-900/10 shadow-[0_24px_70px_rgba(15,23,42,0.08)] backdrop-blur-xl'
+    : 'bg-white/5 border border-white/10 shadow-[0_24px_80px_rgba(3,2,20,0.42)] backdrop-blur-xl';
+  const fieldClass = isLight
+    ? 'w-full rounded-lg border border-slate-900/10 bg-white px-4 py-4 text-sm text-slate-950 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/10'
+    : 'w-full rounded-lg border border-white/10 bg-white/5 px-4 py-4 text-sm text-white placeholder:text-slate-400 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20';
+  const formLabelClass = isLight
+    ? 'mb-3 block text-sm font-semibold uppercase tracking-[0.18em] text-slate-500'
+    : 'mb-3 block text-sm font-semibold uppercase tracking-[0.18em] text-slate-400';
+
+  const contactItems = [
+    {
+      label: 'EMAIL',
+      value: contact.email,
+      href: `mailto:${contact.email}`,
+      external: false,
+      iconBoxClass: isLight
+        ? 'bg-indigo-100 shadow-[inset_0_0_0_1px_rgba(79,70,229,0.12)]'
+        : 'bg-[#23123d] shadow-[inset_0_0_0_1px_rgba(167,139,250,0.12)]',
+      iconClass: isLight ? 'h-7 w-7 text-indigo-600' : 'h-7 w-7 text-violet-300',
+      icon: MailIcon,
+    },
+    {
+      label: 'LINKEDIN',
+      value: linkedinHandle,
+      href: contact.linkedin,
+      external: true,
+      iconBoxClass: isLight
+        ? 'bg-sky-100 shadow-[inset_0_0_0_1px_rgba(2,132,199,0.12)]'
+        : 'bg-[#0f1b36] shadow-[inset_0_0_0_1px_rgba(96,165,250,0.12)]',
+      iconClass: isLight ? 'h-7 w-7 text-sky-600' : 'h-7 w-7 text-sky-400',
+      icon: LinkedInIcon,
+    },
+  ];
 
   return (
-    <section id="contact" className="section">
-      {theme === 'dark' && (
-        <div
-          className="glow-blob w-[600px] h-[400px] bottom-0 left-1/2 opacity-[0.04]"
-          style={{ background: '#6366f1', transform: 'translateX(-50%)' }}
-        />
-      )}
+  <section id="contact" className={`relative pt-48 pb-28 ${sectionText}`}>
+    {/* Background glow */}
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute inset-x-0 bottom-0 h-64 ${
+        isLight
+          ? 'bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12),transparent_70%)]'
+          : 'bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.22),transparent_70%)]'
+      }`}
+    />
 
-      <div className="container mx-auto px-8 relative">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-        >
-          {/* Header — larger heading, more space below */}
-          <div className="text-center mb-24">
-            <p className="label mb-6">Contact</p>
-            <h2
-              className="font-black tracking-tight leading-tight mb-8"
-              style={{ fontSize: 'clamp(2.8rem, 6vw, 4.8rem)' }}
-            >
-              Let&apos;s <span className="gradient-text">work together</span>
-            </h2>
-            <p className={`text-lg max-w-md mx-auto leading-relaxed ${
-              theme === 'light' ? 'text-gray-600' : 'text-slate-500'
-            }`}>
-              Open to backend engineering roles, consulting, and interesting problems.
+    <div className="relative mx-auto max-w-6xl">
+      {/* HEADER */}
+      <div className="mx-auto max-w-6xl text-center md:text-left">
+        <p className={`text-sm font-semibold uppercase tracking-[0.5em] ${labelText}`}>
+          CONTACT
+        </p>
+
+        <h2 className="mt-8 text-4xl font-black leading-[1.1] tracking-[-0.05em] sm:text-5xl md:text-6xl mx-auto md:mx-0 text-center md:text-left">
+          Let&apos;s <span className="gradient-text">work together</span>
+        </h2>
+
+        <p className={`mt-6 max-w-2xl text-lg leading-[1.7] ${introText} mx-auto text-center md:mx-0 md:text-left` }>
+          Open to backend engineering roles, consulting, and interesting problems.
+        </p>
+      </div>
+
+      {/* GRID */}
+      <div className="relative mt-16">
+        {/* Divider */}
+        <div className={`absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 md:block ${dividerColor}`} />
+
+        <div className="w-full grid gap-20 md:grid-cols-2 md:items-start">
+
+          {/* LEFT */}
+          <div className="md:pr-12 w-full">
+            <p className={`max-w-lg text-[1rem] leading-[1.8] ${introText}`}>
+              Prefer direct contact? Reach out via email or connect on LinkedIn. I usually respond within 24 hours.
             </p>
+
+            <div className="space-y-8">
+              {contactItems.map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noreferrer' : undefined}
+                    className={`group flex items-center justify-between ${
+                      index < contactItems.length - 1 ? `border-b pb-8 ${itemBorder}` : ''
+                    }`}
+                  >
+                    <div className="flex items-center gap-5">
+                      <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${item.iconBoxClass}`}>
+                        <Icon className={item.iconClass} />
+                      </div>
+
+                      <div>
+                        <p className={`text-xs uppercase tracking-[0.18em] ${labelText}`}>
+                          {item.label}
+                        </p>
+                        <p className={`mt-1 text-[1rem] font-semibold ${sectionText}`}>
+                          {item.value}
+                        </p>
+                      </div>
+                    </div>
+
+                    <ArrowRightIcon className="h-5 w-5 opacity-60 group-hover:translate-x-1 transition" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Two columns */}
-          <div className="grid md:grid-cols-2 gap-20 lg:gap-32 items-start max-w-4xl mx-auto">
-
-            {/* Left — direct links */}
-            <div className="space-y-4">
-              <p className={`leading-[1.9] mb-10 ${
-                theme === 'light' ? 'text-gray-600' : 'text-slate-400'
-              }`}>
-                Prefer direct contact? Reach out via email or connect on LinkedIn.
-                I usually respond within 24 hours.
-              </p>
-
-              <motion.a
-                href={`mailto:${contact.email}`}
-                className={`group flex items-center justify-between py-6 transition-colors duration-200 ${
-                  theme === 'light'
-                    ? 'border-b border-gray-300 hover:border-indigo-500/30'
-                    : 'border-b border-white/6 hover:border-indigo-500/30'
-                }`}
-                whileHover={{ x: 4 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    theme === 'light'
-                      ? 'bg-indigo-100'
-                      : 'bg-indigo-500/10'
-                  }`}>
-                    <FaEnvelope className="text-indigo-400" size={15} />
-                  </div>
-                  <div>
-                    <p className={`text-xs uppercase tracking-widest font-mono mb-1 ${
-                      theme === 'light' ? 'text-gray-500' : 'text-slate-600'
-                    }`}>Email</p>
-                    <p className={`text-sm group-hover:text-indigo-500 transition-colors ${
-                      theme === 'light'
-                        ? 'text-gray-900 group-hover:text-indigo-600'
-                        : 'text-slate-300 group-hover:text-indigo-300'
-                    }`}>{contact.email}</p>
-                  </div>
+          {/* RIGHT */}
+          <div className="md:pl-12 w-full">
+            <form onSubmit={handleSubmit} className={`rounded-xl p-6 md:p-8 ${cardClass}`}>
+              <div className="space-y-6">
+                <div>
+                  <label className={formLabelClass}>NAME</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    className={fieldClass}
+                  />
                 </div>
-                <FaArrowRight size={12} className={`transition-colors ${
-                  theme === 'light'
-                    ? 'text-gray-400 group-hover:text-indigo-600'
-                    : 'text-slate-600 group-hover:text-indigo-400'
-                }`} />
-              </motion.a>
 
-              <motion.a
-                href={contact.linkedin}
-                target="_blank" rel="noopener noreferrer"
-                className={`group flex items-center justify-between py-6 transition-colors duration-200 ${
-                  theme === 'light'
-                    ? 'border-b border-gray-300 hover:border-blue-500/30'
-                    : 'border-b border-white/6 hover:border-blue-500/30'
-                }`}
-                whileHover={{ x: 4 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    theme === 'light'
-                      ? 'bg-blue-100'
-                      : 'bg-blue-500/10'
-                  }`}>
-                    <FaLinkedin className="text-blue-400" size={15} />
-                  </div>
-                  <div>
-                    <p className={`text-xs uppercase tracking-widest font-mono mb-1 ${
-                      theme === 'light' ? 'text-gray-500' : 'text-slate-600'
-                    }`}>LinkedIn</p>
-                    <p className={`text-sm group-hover:text-blue-500 transition-colors ${
-                      theme === 'light'
-                        ? 'text-gray-900 group-hover:text-blue-600'
-                        : 'text-slate-300 group-hover:text-blue-300'
-                    }`}>sai-nitin-bogavarapu</p>
-                  </div>
+                <div>
+                  <label className={formLabelClass}>EMAIL</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    className={fieldClass}
+                  />
                 </div>
-                <FaArrowRight size={12} className={`transition-colors ${
-                  theme === 'light'
-                    ? 'text-gray-400 group-hover:text-blue-600'
-                    : 'text-slate-600 group-hover:text-blue-400'
-                }`} />
-              </motion.a>
-            </div>
 
-            {/* Right — airy form */}
-            <form onSubmit={handleSubmit} className="space-y-10">
-              <div>
-                <label className="form-label">Name</label>
-                <input type="text" name="name" value={form.name} onChange={handleChange}
-                  required placeholder="Your name" className={inputCls} />
-              </div>
-              <div>
-                <label className="form-label">Email</label>
-                <input type="email" name="email" value={form.email} onChange={handleChange}
-                  required placeholder="your@email.com" className={inputCls} />
-              </div>
-              <div>
-                <label className="form-label">Message</label>
-                <textarea name="message" value={form.message} onChange={handleChange}
-                  required rows={4} placeholder="Tell me about your opportunity..."
-                  className={`${inputCls} resize-none`} />
-              </div>
-              <div className="pt-2">
-                {sent ? (
-                  <Button
-                    variant="success"
-                    disabled
-                    ariaLabel="Message sent successfully"
-                  >
-                    ✓ Sent!
-                  </Button>
-                ) : (
-                  <Button
-                    variant="primary"
-                    type="submit"
-                    icon={FaArrowRight}
-                    iconProps={{ className: 'group-hover:translate-x-0.5 transition-transform' }}
-                  >
-                    Send Message
-                  </Button>
-                )}
+                <div>
+                  <label className={formLabelClass}>MESSAGE</label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your opportunity..."
+                    className={`${fieldClass} min-h-[140px] resize-none`}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-4 rounded-lg bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 transition"
+                >
+                  <span>{sent ? 'Message Sent' : 'Send Message'}</span>
+                  <ArrowRightIcon className="h-5 w-5" />
+                </button>
               </div>
             </form>
           </div>
-        </motion.div>
+
+        </div>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
