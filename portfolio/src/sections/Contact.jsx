@@ -37,7 +37,7 @@ export default function Contact() {
         />
       )}
 
-      <div className="container mx-auto px-8 relative">
+      <div className="container mx-2 px-8 relative">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -45,10 +45,10 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
         >
           {/* Header — larger heading, more space below */}
-          <div className="text-center mb-24">
-            <p className="label mb-6">Contact</p>
+          <div className="text-center mb-4">
+            <p className="label">Contact</p>
             <h2
-              className="font-black tracking-tight leading-tight mb-8"
+              className="font-black tracking-tight leading-tight mb-1"
               style={{ fontSize: 'clamp(2.8rem, 6vw, 4.8rem)' }}
             >
               Let&apos;s <span className="gradient-text">work together</span>
@@ -65,7 +65,7 @@ export default function Contact() {
 
             {/* Left — direct links */}
             <div className="space-y-4">
-              <p className={`leading-[1.9] mb-10 ${
+              <p className={`leading-[1.9] mb-4 ${
                 theme === 'light' ? 'text-gray-600' : 'text-slate-400'
               }`}>
                 Prefer direct contact? Reach out via email or connect on LinkedIn.
@@ -74,20 +74,20 @@ export default function Contact() {
 
               <motion.a
                 href={`mailto:${contact.email}`}
-                className={`group flex items-center justify-between py-6 transition-colors duration-200 ${
+                className={`group flex items-center justify-between py-1 transition-colors duration-200 ${
                   theme === 'light'
                     ? 'border-b border-gray-300 hover:border-indigo-500/30'
                     : 'border-b border-white/6 hover:border-indigo-500/30'
                 }`}
                 whileHover={{ x: 4 }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
                     theme === 'light'
                       ? 'bg-indigo-100'
                       : 'bg-indigo-500/10'
                   }`}>
-                    <FaEnvelope className="text-indigo-400" size={15} />
+                    <FaEnvelope className="text-indigo-500" size={15} />
                   </div>
                   <div>
                     <p className={`text-xs uppercase tracking-widest font-mono mb-1 ${
@@ -123,7 +123,7 @@ export default function Contact() {
                       ? 'bg-blue-100'
                       : 'bg-blue-500/10'
                   }`}>
-                    <FaLinkedin className="text-blue-400" size={15} />
+                    <FaLinkedin className="text-blue-500" size={15} />
                   </div>
                   <div>
                     <p className={`text-xs uppercase tracking-widest font-mono mb-1 ${
@@ -145,7 +145,7 @@ export default function Contact() {
             </div>
 
             {/* Right — airy form */}
-            <form onSubmit={handleSubmit} className="space-y-10">
+            <form onSubmit={handleSubmit} className="space-y-1">
               <div>
                 <label className="form-label">Name</label>
                 <input type="text" name="name" value={form.name} onChange={handleChange}
@@ -176,9 +176,10 @@ export default function Contact() {
                     variant="primary"
                     type="submit"
                     icon={FaArrowRight}
-                    iconProps={{ className: 'group-hover:translate-x-0.5 transition-transform' }}
+                    iconProps={{ className: ' text-blue-500 group-hover:translate-x-0.5 transition-transform' }}
                   >
-                    Send Message
+                    <span class="text-blue-600">Send Message</span>
+                    
                   </Button>
                 )}
               </div>
