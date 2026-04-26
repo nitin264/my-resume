@@ -43,7 +43,7 @@ export default function Hero() {
             className="font-black tracking-tight leading-[1.05]"
             style={{ fontSize: 'clamp(3.2rem, 9vw, 7rem)' }}
           >
-            <span className="text-white">Sai Nitin</span>
+            <span className="text-color: rgba(0, 0, 0, 0.84);">Sai Nitin</span>
             <br />
             <span className="gradient-text">Bogavarapu</span>
           </motion.h1>
@@ -77,9 +77,9 @@ export default function Hero() {
               href="#projects"
               onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
               icon={FaArrowRight}
-              iconProps={{ className: 'group-hover:translate-x-0.5 transition-transform' }}
+              iconProps={{ className: 'group-hover:translate-x-0.5 transition-transform text-blue-500' }}
             >
-              View Projects
+              <span class="text-indigo-600">View Projects</span>
             </Button>
 
             <Button
@@ -87,18 +87,18 @@ export default function Hero() {
               href={hero.linkedin}
               target="_blank" rel="noopener noreferrer"
               icon={FaLinkedin}
-              iconProps={{ className: 'text-blue-400' }}
+              iconProps={{ className: 'text-blue-500' }}
             >
-              LinkedIn
+              <span class="text-indigo-600">LinkedIn</span>
             </Button>
 
             <Button
               variant="secondary"
               href={`mailto:${hero.email}`}
               icon={FaEnvelope}
-              iconProps={{ className: 'text-indigo-400' }}
+              iconProps={{ className: 'text-indigo-500' }}
             >
-              Email
+              <span class="text-indigo-600">Email</span>
             </Button>
           </motion.div>
         </div>

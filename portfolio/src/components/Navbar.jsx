@@ -133,7 +133,7 @@ export default function Navbar() {
             href={`mailto:${hero.email}`}
             className="px-6 py-2"
           >
-            Hire Me
+            <span class="text-indigo-600">Hire Me</span>
           </Button>
         </div>
 
@@ -181,7 +181,7 @@ export default function Navbar() {
                   href={`mailto:${hero.email}`}
                   className="w-full justify-center px-6 py-2"
                 >
-                  Hire Me
+                  <span class="text-indigo-100">Hire Me</span>
                 </Button>
               </div>
             </nav>

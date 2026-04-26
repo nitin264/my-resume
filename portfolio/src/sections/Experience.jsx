@@ -55,8 +55,11 @@ function parseHighlight(text) {
 }
 
 /* ── Responsibility bullet ── */
-function Bullet({ text, accent }) {
+function Bullet({ text, accent, theme }) {
   const kind = parseHighlight(text);
+  const textColor = theme === 'light'
+    ? (kind === 'normal' ? '#374151' : '#1f2937')
+    : (kind === 'normal' ? 'rgba(148,163,184,0.9)' : '#e2e8f0');
   return (
     <motion.li
       whileHover={{ x: 4 }}
@@ -67,7 +70,7 @@ function Bullet({ text, accent }) {
         gap: '0.65rem',
         fontSize: '0.9rem',
         lineHeight: 1.75,
-        color: kind === 'normal' ? 'rgba(148,163,184,0.9)' : '#e2e8f0',
+        color: textColor,
         cursor: 'default',
         padding: '0.1rem 0',
       }}
@@ -102,7 +105,7 @@ function Bullet({ text, accent }) {
 }
 
 /* ── Main card ── */
-function ExperienceCard({ item, side, cfg, index }) {
+function ExperienceCard({ item, side, cfg, index, theme }) {
   const isLeft = side === 'left';
 
   return (
@@ -176,10 +179,7 @@ function ExperienceCard({ item, side, cfg, index }) {
           <h3 style={{
             fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)',
             fontWeight: 800,
-            background: `linear-gradient(135deg, #f1f5f9 0%, ${cfg.accent} 100%)`,
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            ...(theme === 'light' ? { color: '#1f2937' } : { background: `linear-gradient(135deg, #f1f5f9 0%, ${cfg.accent} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }),
             marginBottom: '0.5rem',
             letterSpacing: '-0.01em',
           }}>{item.title}</h3>
@@ -188,10 +188,7 @@ function ExperienceCard({ item, side, cfg, index }) {
             <h3 style={{
               fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)',
               fontWeight: 800,
-              background: `linear-gradient(135deg, #f1f5f9 20%, ${cfg.accent} 100%)`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              ...(theme === 'light' ? { color: '#1f2937' } : { background: `linear-gradient(135deg, #f1f5f9 20%, ${cfg.accent} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }),
               marginBottom: '0.25rem',
               letterSpacing: '-0.01em',
             }}>{item.title}</h3>
@@ -206,7 +203,7 @@ function ExperienceCard({ item, side, cfg, index }) {
             {/* Responsibilities */}
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
               {item.responsibilities.map((r, ri) => (
-                <Bullet key={ri} text={r} accent={cfg.accent} />
+                <Bullet key={ri} text={r} accent={cfg.accent} theme={theme} />
               ))}
             </ul>
           </>
@@ -346,7 +343,7 @@ export default function Experience() {
                       {/* Left slot */}
                       <div style={{ paddingRight: '2.5rem', display: 'flex', justifyContent: 'flex-end' }}>
                         {isLeft && <div style={{ maxWidth: 440, width: '100%' }}>
-                          <ExperienceCard item={item} side="left" cfg={cfg} index={i} />
+                          <ExperienceCard item={item} side="left" cfg={cfg} index={i} theme={theme} />
                         </div>}
                       </div>
 
@@ -358,7 +355,7 @@ export default function Experience() {
                       {/* Right slot */}
                       <div style={{ paddingLeft: '2.5rem' }}>
                         {!isLeft && <div style={{ maxWidth: 440 }}>
-                          <ExperienceCard item={item} side="right" cfg={cfg} index={i} />
+                          <ExperienceCard item={item} side="right" cfg={cfg} index={i} theme={theme} />
                         </div>}
                       </div>
 
@@ -410,7 +407,7 @@ export default function Experience() {
                       </div>
                       {/* Card */}
                       <div style={{ flex: 1 }}>
-                        <ExperienceCard item={item} side="right" cfg={cfg} index={i} />
+                        <ExperienceCard item={item} side="right" cfg={cfg} index={i} theme={theme} />
                       </div>
                     </div>
                   );
