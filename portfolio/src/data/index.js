@@ -10,14 +10,14 @@ export const hero = {
   name: 'Sai Nitin Bogavarapu',
   title: 'Software Engineer | Python Backend Developer',
   tagline:
-    'Backend engineer with 3+ years of experience building enterprise insurance systems and automation tools.',
+    'Backend engineer with 4 years of experience building enterprise insurance systems and automation tools.',
   linkedin: 'https://www.linkedin.com/in/sai-nitin-bogavarapu/',
   email: 'bnitinx51@gmail.com',
 };
 
 export const about = {
   summary:
-    'Software Engineer with 3+ years of experience building backend systems for enterprise insurance platforms using Python and SQL.',
+    'Software Engineer with 4 years of experience building backend systems for enterprise insurance platforms using Python and SQL.',
   highlights: [
     'Backend API development',
     'Database optimization using Oracle / PL-SQL',
@@ -33,7 +33,7 @@ export const skills = [
   {
     category: 'Languages',
     icon: 'code',
-    items: ['Python', 'SQL', 'JavaScript (basic)'],
+    items: ['Python', 'SQL', 'JavaScript'],
   },
   {
     category: 'Frameworks',
@@ -48,7 +48,7 @@ export const skills = [
   {
     category: 'Libraries',
     icon: 'package',
-    items: ['Pandas', 'NumPy', 'Requests', 'AsyncIO'],
+    items: ['Pandas', 'NumPy', 'Requests', 'AsyncIO', 'SQLAlchemy'],
   },
   {
     category: 'Tools',
@@ -102,16 +102,10 @@ export const projects = [
       'Automation platform that manages server restarts, environment resets, and cleanup tasks for development environments.',
   },
   {
-    title: 'API Data Automation Tool',
-    tech: ['Python', 'FastAPI', 'Pandas'],
+    title: 'Stock Market Analysis Tool',
+    tech: ['Python', 'FastAPI', 'SQLAlchemy', 'Pandas'],
     description:
       'Backend service that collects API data, processes it using Pandas, and exposes structured endpoints.',
-  },
-  {
-    title: 'AI Document Search Tool',
-    tech: ['Python', 'FastAPI', 'OpenAI API', 'Vector Database'],
-    description:
-      'Document assistant that allows users to upload PDFs and ask questions using semantic search.',
   },
   {
     "title": "Developer Portfolio Platform",
